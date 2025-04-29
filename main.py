@@ -76,7 +76,7 @@ def classificar_texto(texto, max_retries=3, wait_time=5):
 # ----------- Início do Script ---------------
 
 # Lê o CSV
-df = pd.read_csv("justificativas_200.csv")
+df = pd.read_csv("justificativas_todas_filtrado.csv")
 
 # Cria colunas para armazenar classificações
 motivos_classificados = []
@@ -84,7 +84,7 @@ motivos_classificados = []
 # Iterar linha a linha (com barra de progresso)
 for _, row in tqdm(df.iterrows(), total=len(df)):
     motivo = classificar_texto(row["Justificativa_processada"])
-    motivos_classificados.append(motivo)
+    motivos_classificados.append(motivo) 
     time.sleep(2)  # Sleep para evitar sobrecarga na API
 
 # Adiciona resultados no DataFrame
